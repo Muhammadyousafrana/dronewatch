@@ -1,0 +1,24 @@
+# TFLite / LiteRT — keep rules for release builds
+# Without these, R8 strips the native-interop classes and inference crashes at runtime.
+
+# ── Core Interpreter & Delegate classes ──────────────────────────────────────
+-keep class org.tensorflow.lite.** { *; }
+-keep class org.tensorflow.lite.flex.** { *; }
+-keep class com.google.ai.edge.litert.** { *; }
+
+# Keep native method bindings (JNI entry points must not be renamed)
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+# ── Model I/O helpers ────────────────────────────────────────────────────────
+-keep class org.tensorflow.lite.support.** { *; }
+-keep class org.tensorflow.lite.task.** { *; }
+
+# ── Firebase AI / Gemini ─────────────────────────────────────────────────────
+-keep class com.google.firebase.** { *; }
+-keep class com.google.android.gms.** { *; }
+
+# ── Kotlin Coroutines (needed by ViewModel & Flow) ──────────────────────────
+-keepnames class kotlinx.coroutines.internal.MainDispatcherFactory {}
+-keepnames class kotlinx.coroutines.CoroutineExceptionHandler {}

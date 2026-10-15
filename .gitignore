@@ -1,0 +1,20 @@
+# Gradle and Android build output
+.gradle/
+.kotlin/
+**/build/
+
+# Local machine configuration
+/local.properties
+app/google-services.json
+
+# IDE and OS files
+.idea/
+*.iml
+.DS_Store
+
+# Generated install and release packages
+*.apk
+*.aab
+/captures/
+.externalNativeBuild/
+.cxx/
